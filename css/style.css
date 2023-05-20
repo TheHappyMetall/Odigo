@@ -1,0 +1,202 @@
+/* lato-regular - latin */
+@font-face {
+  font-family: "Lato";
+  font-style: normal;
+  font-weight: 400;
+  src: local("Lato Regular"), local("Lato-Regular"),
+    url("../fonts/lato-v15-latin-regular.woff2") format("woff2"),
+    /* Chrome 26+, Opera 23+, Firefox 39+ */
+      url("../fonts/lato-v15-latin-regular.woff") format("woff"); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+}
+/* lato-700 - latin */
+@font-face {
+  font-family: "Lato";
+  font-style: normal;
+  font-weight: 700;
+  src: local("Lato Bold"), local("Lato-Bold"),
+    url("../fonts/lato-v15-latin-700.woff2") format("woff2"),
+    /* Chrome 26+, Opera 23+, Firefox 39+ */
+      url("../fonts/lato-v15-latin-700.woff") format("woff"); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+}
+/* lato-900 - latin */
+@font-face {
+  font-family: "Lato";
+  font-style: normal;
+  font-weight: 900;
+  src: local("Lato Black"), local("Lato-Black"),
+    url("../fonts/lato-v15-latin-900.woff2") format("woff2"),
+    /* Chrome 26+, Opera 23+, Firefox 39+ */
+      url("../fonts/lato-v15-latin-900.woff") format("woff"); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+}
+html {
+  box-sizing: border-box;
+}
+/* именно так правильно задавать box-sizing */
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+/* определяем body чтобы от него наследовать свойства */
+body {
+  font-family: "Lato";
+  font-style: normal;
+  font-size: 16px;
+  line-height: 1.2;
+  font-weight: normal;
+  color: #102746;
+}
+/* контейнер с отступами по бокам */
+.wrapper {
+  max-width: 1060px;
+  margin: 0 auto;
+}
+/* Header styles start */
+.header {
+  /* фиксация шапки */
+  position: fixed;
+  top: 0;
+  left: 0;
+  /* всегда занимает полную ширину */
+  width: 100%;
+}
+.header-wrapper {
+  display: flex;
+  /* в целях безопасности разрешаем перенос (чтобы элементы не наслаивались)  */
+  flex-wrap: wrap;
+  /* элементы справа чуть ниже чем лого */
+  align-items: flex-end;
+  justify-content: space-between;
+  padding-top: 56px;
+}
+.header-list {
+  display: flex;
+  /* теперь справа в строку */
+  flex-wrap: wrap;
+}
+.header-item {
+  margin-right: 82px;
+}
+.header-item:last-child {
+  /* обнуляем отступ справа для последнего элемента */
+  margin-right: 0;
+}
+.header-link {
+  font-size: 18px;
+  line-height: 24px;
+  color: white;
+  text-decoration: none;
+}
+.header-link:hover,
+.header-link:focus,
+.header-link:active {
+  opacity: 0.75;
+}
+/* Header styles end */
+
+/* Intro styles start */
+.intro {
+  min-height: 100vh;
+  background: url(../img/intro-bg.jpg) no-repeat center;
+  /* чтобы фон покрывал блок при любых его размерах */
+  /* в данном случае без этого свойства появляется полоса сверху */
+  background-size: cover;
+  padding-top: 263px;
+}
+.intro-title {
+  max-width: 619px;
+  font-weight: 500;
+  font-size: 50px;
+  line-height: 60px;
+  color: white;
+  margin-bottom: 22px;
+}
+.intro-subtitle {
+  color: white;
+  font-size: 16px;
+  line-height: 24px;
+  max-width: 546px;
+  margin-bottom: 59px;
+}
+.search-form-info {
+  /* убираем отступы между input которые появляются при верстке */
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.search-form-field {
+  /* мы не можем указывать для input ::after и ::before, 
+поэтому не получится добавить квадрат, и скруглить углы.
+Поэтому берем из Фигмы svg */
+
+  /* делаем прозрачным bg color, определяем позицию круга (7px это отступ по вертикали)*/
+  background: transparent url(../img/svg/circle-ico.svg) no-repeat left 7px;
+  /* фиксируем размер */
+  background-size: 20px;
+  /* в разных браузерах рамки input очень различаются, поэтому сначала обнуляем*/
+  border: 0;
+  border-bottom: 2px solid #bfc0c5;
+  /* отделяем друг от друга по горизонтали */
+  margin-right: 60px;
+
+  /* фиксируем размер input чтобы не было проблем с placeholder на адаптиве */
+  width: 297px;
+  /* отледеляем круг и линию */
+  padding-left: 43px;
+  padding-bottom: 22px;
+
+  font-weight: 500;
+  font-size: 18px;
+  color: white;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+/* placeholder стилизуется отдельно */
+.search-form-field::placeholder {
+  font-weight: 500;
+  font-size: 18px;
+  color: white;
+}
+.search-form-submit {
+  padding: 15px 39px;
+  text-transform: uppercase;
+  font-weight: 500;
+  font-size: 24px;
+  color: white;
+  background: #1b7dff;
+  border: 0;
+}
+.search-form-submit:hover,
+.search-form-submit:focus,
+.search-form-submit:active {
+  background: #0a5bc7;
+}
+/* Intro styles end */
+
+/* Benefits styles start */
+.benefits-wrapper {
+  max-width: 1262px;
+  background-color: white;
+  margin: 0 auto;
+  box-shadow: 0px 2px 20px rgba(21, 24, 36, 0.15993);
+  /* для абсолютного позиционирования */
+  position: relative;
+}
+.benefits-title {
+  width: 100%;
+  font-weight: 500;
+  font-size: 35px;
+  line-height: 42px;
+  padding: 93px 100px 88px 100px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  /* сдвигаем вверх */
+  transform: translateY(-100%);
+  background-color: white;
+}
+.benefits-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-column-gap: 55px;
+}
+/* Benefits styles end */
