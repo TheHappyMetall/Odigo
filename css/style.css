@@ -46,10 +46,39 @@ body {
   font-weight: normal;
   color: #102746;
 }
+img {
+  /* чтобы img не превышал размер контейнера */
+  max-width: 100%;
+  /* чтобы всегда сжималось пропорционально по высоте */
+  height: auto;
+}
 /* контейнер с отступами по бокам */
 .wrapper {
   max-width: 1060px;
   margin: 0 auto;
+}
+/* контнейнер побольше */
+.wrapper-full {
+  max-width: 1262px;
+  margin: 0 auto;
+}
+.section-title {
+  font-weight: 500;
+  font-size: 35px;
+  line-height: 42px;
+  position: relative;
+  padding-bottom: 10px;
+}
+/* полоска снизу */
+.section-title::after {
+  display: block;
+  content: "";
+  width: 253px;
+  height: 3px;
+  position: absolute;
+  background-color: #006dfe;
+  bottom: 0;
+  left: 0;
 }
 /* Header styles start */
 .header {
@@ -102,6 +131,8 @@ body {
   /* в данном случае без этого свойства появляется полоса сверху */
   background-size: cover;
   padding-top: 263px;
+  /* чтобы исключить наезжания при увеличении текста в intro-title || intro-subtitile*/
+  padding-bottom: 223px;
 }
 .intro-title {
   max-width: 619px;
@@ -173,6 +204,9 @@ body {
 /* Intro styles end */
 
 /* Benefits styles start */
+.benefits {
+  margin-bottom: 131px;
+}
 .benefits-wrapper {
   max-width: 1262px;
   background-color: white;
@@ -195,8 +229,160 @@ body {
   background-color: white;
 }
 .benefits-cards {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-column-gap: 55px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-column-gap: 55px;
+  padding: 0 100px;
+}
+.benefits-card {
+  grid-column: span 1;
+  margin-bottom: 112px;
+}
+.benefits-card-pic {
+  margin-bottom: 37px;
+  max-width: 66px;
+}
+.benefits-card-thumb {
+  /* у картинок есть отступ снизу. Нивелируем (можно с помощью flex) */
+  display: block;
+}
+
+.benefits-card-title {
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 24px;
+  margin-bottom: 26px;
+}
+
+.benefits-card-descript {
+  font-size: 16px;
+  line-height: 24px;
+  margin-bottom: 39px;
+}
+
+.benefits-card-more {
+  /* чтобы задать фон-стрелку */
+  display: inline-block;
+  font-size: 16px;
+  line-height: 24px;
+  color: #006dfe;
+  text-decoration: none;
+  /* стрелка */
+  /* отступ + ширина стрелка = pr */
+  padding-right: 59px;
+  background: url(../img/svg/right-arrow.svg) no-repeat 95% center;
+  transition: 0.2s all;
+}
+.benefits-card-more:hover,
+.benefits-card-more:focus {
+  background: url(../img/svg/right-arrow.svg) no-repeat right center;
 }
 /* Benefits styles end */
+
+/* Places styles start */
+.places {
+  margin-bottom: 131px;
+}
+.places-caption {
+  /* позиционируем VIEW ALL справа */
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 36px;
+}
+.places-title {
+  /* чтобы элементы не прилипали на маленьком экране */
+  margin-right: 15px;
+}
+
+.places-view-all {
+  font-size: 16px;
+  color: #006dfe;
+  text-decoration: none;
+  background: url(../img/svg/right-arrow.svg) no-repeat right center;
+  padding-right: 59px;
+}
+
+.places-view-all:hover,
+.places-view-all:focus {
+  opacity: 0.65;
+}
+
+.places-cards {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  grid-gap: 10px;
+}
+
+.places-card {
+  /* для оверлей слоя */
+  position: relative;
+  /* чтобы при hover картинка не выходила за край контейнера */
+  overflow: hidden;
+}
+/* имитация фильтра */
+/* можно ::before, роли не играет */
+.places-card::after {
+  display: block;
+  content: "";
+  width: 100%;
+  height: 100%;
+  background-color: rgba(21, 24, 36, 0.4);
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2;
+}
+.places-card:hover .places-card-pic {
+  transform: scale(1.05);
+}
+
+.places-card-size-lg {
+  grid-column: span 3;
+}
+
+.places-card-size-sm {
+  grid-column: span 2;
+}
+
+.places-card-pic {
+  /* в данном случае получилось заполнить ширину контейнера этим свойством */
+  /* но если бы не получилось, то: transform: scale, и overflow: hidden*/
+  width: 100%;
+  transition: all 0.15s;
+  /* указывает, как изображение будет масштабироваться внутри контейнера */
+  /* при сжатии контейнера всегда будет видно центр картинки */
+  object-fit: cover;
+}
+
+.places-card-pic-size-lg {
+  height: 354px;
+}
+
+.places-card-pic-size-sm {
+  height: 283px;
+}
+
+.places-card-title {
+  font-size: 50px;
+  line-height: 60px;
+  color: white;
+  position: absolute;
+  /* bottom: 27px; */
+  bottom: 27px;
+  left: 29px;
+  /* поднимаем наверх, чтобы на него не распространялся фильтр */
+  z-index: 3;
+}
+
+.places-card-link {
+  /* делаем ссылку поверх всего, и размером с весь контейнер */
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 4;
+}
+/* Places styles end */
